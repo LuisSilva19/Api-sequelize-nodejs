@@ -3,7 +3,7 @@ import express, { Request, Response } from "express";
 import morgan from "morgan";
 import cors from "cors";
 import { connectDB, sequelize } from "./config/db";
-import noteRouter from "./routes/routes";
+import noteRouter from "./routes/noteRoutes";
 import log from "./config/logger";
 import setupSwagger from "./config/swagger";
 
@@ -27,13 +27,6 @@ app.get("/api/healthchecker", (req: Request, res: Response) => {
 });
 
 app.use("/api/notes", noteRouter);
-
-// app.all("*", (req: Request, res: Response) => {
-//   res.status(404).json({
-//     status: "fail",
-//     message: `Route: ${req.originalUrl} does not exist on this server`,
-//   });
-// });
 
 const PORT = 8000;
 app.listen(PORT, async () => {

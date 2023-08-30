@@ -14,7 +14,7 @@ const setupSwagger = (app: express.Application): void => {
 
   const swaggerOptions = {
     swaggerDefinition,
-    apis: [path.join(__dirname, "routes/*.js")],
+    apis: [path.join(__dirname, "../routes/*.ts")],
   };
 
   app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJsDoc(swaggerOptions)));
